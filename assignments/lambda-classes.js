@@ -1,4 +1,6 @@
+
 // CODE here for your Lambda Classes
+
 
 class Person {
     constructor (attr) {
@@ -48,5 +50,21 @@ class Student extends Person {
 
     sprintChallenge(subject) {
         return `${this.name} has begun sprint challenge on ${subject}.`;
+    }
+}
+
+class PM extends Instructor {
+    constructor (attr) {
+        super(attr);
+        this.gradeClassName = attr.gradeClassName;
+        this.favInstructor = attr.favInstructor;
+    }
+
+    standUp(channel) {
+        return `${this.name} announces to ${channel}, @channel standy times!`;
+    }
+
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student}'s code on ${subject}`;
     }
 }
