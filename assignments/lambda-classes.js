@@ -46,6 +46,11 @@ class Instructor extends Person {
     grade(student, subject) {
         return `${student} receives a perfect score on ${subject}`;
     }
+
+    amendGrade(student) {
+        student.grade += Math.floor(Math.random() * 100) - student.grade;
+        return `${student.name}'s new grade is ${student.grade}.`;
+    }
 }
 
 const alex = new Instructor({
@@ -77,10 +82,8 @@ class Student extends Person {
         this.previousBackground = attr.previousBackground;
         this.className = attr.className;
         this.favSubject = attr.favSubject;
-        this.grade = Math.min(Math.max(attr.grade, 1), 100);
+        this.grade = Math.min(100, Math.max(0, attr.grade));
     }
-
-
 
     listsSubjects() {
         return this.favSubject.split(", ");
@@ -93,6 +96,14 @@ class Student extends Person {
     sprintChallenge(subject) {
         return `${this.name} has begun sprint challenge on ${subject}.`;
     }
+
+    graduate(){
+        if(this.grade > 70) {
+            return `${this.name} have a grade of ${this.grade} and is ready to graduate. YAY!!`;
+        } else {
+            return `${this.name} have a grade of ${this.grade} so needs to increase their score.`;
+        }
+    }
 }
 
 const emma = new Student({
@@ -101,7 +112,8 @@ const emma = new Student({
     location: "Norwich, UK",
     previousBackground: "None",
     className: "WEBEU4",
-    favSubject: "JavaScript, Python, HTML"
+    favSubject: "JavaScript, Python, HTML",
+    grade: 40
 })
 
 const nick = new Student({
@@ -113,7 +125,7 @@ const nick = new Student({
     favSubject: "LESS, HTML"
 })
 
-console.log(emma.speak());
+console.log(emma);
 console.log(emma.listsSubjects());
 console.log(emma.PRAssignment("JS-VI"));
 console.log(nick.speak());
@@ -163,3 +175,8 @@ console.log(chinedu.standUp("WEBEU4_chinedu"));
 console.log(anu.speak());
 console.log(anu.grade("Nick", "LESS"));
 console.log(anu.debugsCode("John", "HTML"));
+
+
+console.log(chinedu.amendGrade(emma));
+console.log(emma.graduate());
+
