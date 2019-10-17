@@ -80,7 +80,7 @@ class Student extends Person {
     }
 
     listsSubjects() {
-        return this.favSubject.split();
+        return this.favSubject.split(", ");
     }
 
     PRAssignment(subject){
