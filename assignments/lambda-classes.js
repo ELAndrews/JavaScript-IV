@@ -77,7 +77,10 @@ class Student extends Person {
         this.previousBackground = attr.previousBackground;
         this.className = attr.className;
         this.favSubject = attr.favSubject;
+        this.grade = Math.min(Math.max(attr.grade, 1), 100);
     }
+
+
 
     listsSubjects() {
         return this.favSubject.split(", ");
